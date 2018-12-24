@@ -63,8 +63,6 @@ vagrant up --provider=google
 - Soporte de carpetas sincronizadas a través de la acción rsync de Vagrant.
 - Defina configuraciones específicas de zona para que Vagrant pueda administrar máquinas en múltiples zonas.
 
----
-
 ## Azure
 
 Para el despliegue en Azure he seguido el siguiente [tutorial](https://github.com/Azure/vagrant-azure/blob/v2.0/README.md).
@@ -164,8 +162,6 @@ vagrant halt machine_google
 vagrant halt machine_azure
 ```
 
----
-
 ## Provisionamiento
 
 Para el provisionamiento he utilizado Ansible, que se trata de una herramienta para provisionar la máquina virtual.
@@ -192,8 +188,6 @@ vagrant provision
 vagrant provision machine_google
 vagrant provision machine_azure
 ```
-
----
 
 ## Despliegue
 
