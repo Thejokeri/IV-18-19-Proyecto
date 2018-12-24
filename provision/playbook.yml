@@ -1,0 +1,31 @@
+- hosts: all
+  remote_user: djskullz8
+  tasks:
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: Instalar pip2
+      become: true
+      apt: pkg=python-pip state=latest
+
+    - name: Instalar pip3
+      become: true
+      apt: pkg=python3-pip state=latest
+
+    - name: Instalar Git
+      become: true
+      apt: pkg=git state=latest
+
+    - name: Clone a private repository into IV-18-19-Proyecto
+      git:
+        repo: https://github.com/Thejokeri/IV-18-19-Proyecto.git
+        version: master
+        dest: IV-18-19-Proyecto/
+      become: no
+
+    - name: Instalar requirements
+      become: true
+      command: pip3 install -r ./IV-18-19-Proyecto/requirements.txt
