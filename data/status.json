@@ -1,0 +1,6 @@
+{
+    "status": "OK",
+    "ejemplo": { "ruta": "/isuser/usuario1",
+                 "valor": "{access: true, id: 0, nombre: usuario1}"
+               }
+}

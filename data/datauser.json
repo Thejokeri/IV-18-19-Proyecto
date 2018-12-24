@@ -1,0 +1,18 @@
+{
+  "usuarios": [{
+      "nombre": "usuario1",
+      "access": true,
+      "id": 0
+    },
+    {
+      "nombre": "usuario2",
+      "access": true,
+      "id" : 1
+    },
+    {
+      "nombre": "usuario3",
+      "access": true,
+      "id": 2
+    }
+  ]
+}

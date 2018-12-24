@@ -1,0 +1,88 @@
+{
+	"/path1/to/file1": [{
+		"nombre": "file1.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path1/to/file2": [{
+		"nombre": "file2.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path1/to/file3": [{
+		"nombre": "file3.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path1/to/file4": [{
+		"nombre": "file4.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+
+	"/path2/to/file1": [{
+		"nombre": "file1.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path2/to/file2": [{
+		"nombre": "file2.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path2/to/file3": [{
+		"nombre": "file3.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path2/to/file4": [{
+		"nombre": "file4.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+
+	"/path3/to/file1": [{
+		"nombre": "file1.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path3/to/file2": [{
+		"nombre": "file2.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path3/to/file3": [{
+		"nombre": "file3.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}],
+	"/path3/to/file4": [{
+		"nombre": "file4.pdf"
+	}, {
+		"date": "10-11-2018"
+	}, {
+		"ext": "pdf"
+	}]
+}

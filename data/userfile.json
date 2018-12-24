@@ -1,0 +1,15 @@
+{
+	"archivos": [{
+			"nombre": "usuario1",
+			"path_file": ["/path1/to/file1", "/path1/to/file2", "/path1/to/file3", "/path1/to/file4"]
+		},
+		{
+			"nombre": "usuario2",
+			"path_file": ["/path2/to/file1", "/path2/to/file2", "/path2/to/file3", "/path2/to/file4"]
+		},
+		{
+			"nombre": "usuario3",
+			"path_file": ["/path3/to/file1", "/path3/to/file2", "/path3/to/file3", "/path3/to/file4"]
+		}
+	]
+}

@@ -1,0 +1,6 @@
+filedepot
+Flask
+psycopg2
+pyPdf
+pytest
+gunicorn
