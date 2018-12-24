@@ -102,8 +102,12 @@ El despliegue de Zeit esta en el siguiente enlace: [Documentación.](./doc/deplo
 
 El despliegue en la nube lo he realizado en Azure y en Google Cloud.
 
-Despliegue final: 35.225.49.80
+#### Azure
 
-Despliegue final: 23.97.177.83
+Despliegue final: 104.214.231.3
+
+### Google Cloud
+
+Despliegue final: 35.232.122.71
 
 [Documentación del despliegue en la nube.](./doc/deploytocloud.md)
