@@ -1,0 +1,16 @@
+# Ignoramos las carpetar
+
+doc/
+cloudycloud/
+.*/
+test/
+
+# Ignoramos los siguientes archivos
+
+.*
+heroku.yml
+LICENSE
+Makefile
+now.json
+Procfile
+runtime.txt
