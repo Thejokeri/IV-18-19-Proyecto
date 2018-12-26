@@ -10,5 +10,4 @@ def Actualizar():
 
 # Funcion que se encargar de Iniciar la aplicación
 def Iniciar():
-    with run('cd IV-18-19-Proyecto')
-        run('sudo gunicorn app:app -b 0.0.0.0:80')
+    run('cd IV-18-19-Proyecto && sudo gunicorn app:app -b 0.0.0.0:80')
