@@ -210,3 +210,8 @@ Orden para desplegar en la máquina de Google:
 ```bash
 fab -f despliegue/fabfile.py -H djskullz8@35.225.49.80 <Actualizar,Iniciar>
 ```
+
+Enlaces de interés
+
+- [Overview and Tutorial](http://docs.fabfile.org/en/1.14/tutorial.html).
+- [How To Use Fabric To Automate Administration Tasks And Deployments](https://www.digitalocean.com/community/tutorials/how-to-use-fabric-to-automate-administration-tasks-and-deployments).
