@@ -4,8 +4,7 @@ from fabric.api import *
 
 # Funcion que se encarga de actualizar la aplicación con el nuevo contenido de mi repositorio
 def Actualizar():
-    run('cd ./IV-18-19-Proyecto')
-    run('git pull')
+    run('cd ./IV-18-19-Proyecto && git pull')
     run('pip3 install -r ./IV-18-19-Proyecto/requirements.txt')
     run('pip install --upgrade pip')
 
