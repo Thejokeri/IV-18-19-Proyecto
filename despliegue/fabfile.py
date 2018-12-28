@@ -7,7 +7,6 @@ import os
 def Instalar():
     run('git clone https://github.com/Thejokeri/IV-18-19-Proyecto.git')
     run('pip3 install -r ./IV-18-19-Proyecto/requirements.txt')
-    run('pip install --upgrade pip')
 
 # Funcion para borrar el archivo
 def Borrar():
