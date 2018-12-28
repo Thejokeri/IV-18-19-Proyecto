@@ -6,12 +6,9 @@ import subprocess
 
 # Funcion para instalar la aplicación en nuestra máquina
 def Instalar():
-    exists = os.path.isdir('./IV-18-19-Proyecto')
+    exists = os.path.isdir('../IV-18-19-Proyecto')
 
-    if exists:
-        print('Existe el archivo, lo borramos')
-        run('sudo rm -rf ./IV-18-19-Proyecto')
-    else:
+    if not exists:
         run('git clone https://github.com/Thejokeri/IV-18-19-Proyecto.git')
         run('pip3 install -r ./IV-18-19-Proyecto/requirements.txt')
         run('pip install --upgrade pip')
@@ -22,7 +19,7 @@ def Borrar():
 
 # Funcion que se encarga de actualizar la aplicación con el nuevo contenido de mi repositorio
 def Actualizar():
-    exists = os.path.isdir('./IV-18-19-Proyecto')
+    exists = os.path.isdir('../IV-18-19-Proyecto')
 
     if exists:
         print('Existe el archivo, actualizamos la aplicación')
@@ -35,8 +32,8 @@ def Actualizar():
 
 # Funcion que se encargar de Iniciar la aplicación
 def Iniciar():
-    exists = os.path.isdir('./IV-18-19-Proyecto')
-    
+    exists = os.path.isdir('../IV-18-19-Proyecto')
+
     if exists:
         print('Existe el archivo, iniciamos la aplicación')
         run('cd IV-18-19-Proyecto && sudo gunicorn app:app -b 0.0.0.0:80')
