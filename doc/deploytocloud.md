@@ -195,20 +195,28 @@ Para el despliegue del microservicio he usado Fabric, que se trata de una herram
 
 En el [fabfile.py](../despliegue/fabfile.py) he creado las siguientes funciones:
 
-- Actualizar: Borra el repositorio, realiza un clon del repositorio e instala las dependencias del [requirements.txt](../requirements.txt).
+- Instalar: Clona el repositorio e instala los [requirements.txt](../requirements.txt).
 
-- Iniciar: Inicia la aplicación que escuche en el puerto 80.
+- Borrar: Elimina la carpeta del repositorio.
+
+- Actualizar: Comprueba si existe la carpeta del repositorio. En caso afirmativo, realiza un git pull, instala las dependencias del [requirements.txt](../requirements.txt) y actualiza el pip.
+
+- Iniciar: Comprueba si existe la carpeta del repositorio e inicia la aplicación que escuche en el puerto 80.
+
+- ShowStatus: Muestra, mediante un curl, el STATUS de la aplicación.
+
+- Parar: Elimina el proceso que está ejecutando la aplicación.
 
 Orden para desplegar en la máquina de Azure:
 
 ```bash
-fab -f despliegue/fabfile.py -H djskullz8@23.97.177.83 <Actualizar,Iniciar>
+fab -f despliegue/fabfile.py -H djskullz8@23.97.177.83 <Funciones>
 ```
 
 Orden para desplegar en la máquina de Google:
 
 ```bash
-fab -f despliegue/fabfile.py -H djskullz8@35.225.49.80 <Actualizar,Iniciar>
+fab -f despliegue/fabfile.py -H djskullz8@35.225.49.80 <Funciones>
 ```
 
 Enlaces de interés
