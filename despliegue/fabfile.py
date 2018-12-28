@@ -40,10 +40,8 @@ def Iniciar():
 
 
 # Funcion para mostrar el STATUS del despliegue
-def ShowDeploy():
-    run('CURL=$(curl 0.0.0.0:80)')
-    run('sudo export CURL')
-    print(os.environ['CURL'])
+def ShowStatus():
+    run('curl 0.0.0.0:80')
 
 # Funcion que se encarga de parar el proceso de ejecución de la aplicación
 def Parar():
