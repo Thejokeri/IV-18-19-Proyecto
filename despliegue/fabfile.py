@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from fabric.api import * 
 import os 
-import subprocess
 
 # Funcion para instalar la aplicación en nuestra máquina
 def Instalar():
@@ -41,10 +40,10 @@ def Iniciar():
         print('Imposible arrancar la aplicación, debe de instalarla antes')
 
 
-# Funcion para testear si recibe correctamente el JSON
-def TestDeploy():
-    json = subprocess.check_output('curl 0.0.0.0:80')
-    print(json)
+# Funcion para mostrar el STATUS del despliegue
+def ShowDeploy():
+    run('CURL=$(curl 0.0.0.0:80)')
+    run('echo $CURL')
 
 # Funcion que se encarga de parar el proceso de ejecución de la aplicación
 def Parar():
