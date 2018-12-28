@@ -162,6 +162,20 @@ vagrant halt machine_google
 vagrant halt machine_azure
 ```
 
+Para poder llevar acabo que Vagrant pueda llevar [multiples máquinas](https://www.vagrantup.com/docs/multi-machine/), he realizado lo siguiente:
+
+```ruby
+    config.vm.define :machine_google do |machine_google|
+        ...
+    end
+
+    config.vm.define :machine_azure do |machine_azure|
+        ...
+    end
+```
+
+Cuando se introduce machine_google (ó machine_azure) directamente se ejecutan las sentencias que están dentro de la definición.
+
 ## Provisionamiento
 
 Para el provisionamiento he utilizado Ansible, que se trata de una herramienta para provisionar la máquina virtual.
