@@ -4,7 +4,8 @@ from fabric.api import *
 import os 
 import subprocess
 
-exists = os.path.isdir('./IV-18-19-Proyecto')
+exists = os.path.isdir('./IV-18-19-Proyecto/')
+print(exists)
 
 # Funcion para instalar la aplicación en nuestra máquina
 def Instalar():
