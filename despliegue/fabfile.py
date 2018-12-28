@@ -4,8 +4,8 @@ from fabric.api import *
 import os 
 import subprocess
 
-exists = os.path.isdir('./IV-18-19-Proyecto/')
-print(exists)
+exists = os.path.isdir('./IV-18-19-Proyecto')
+run('ls')
 
 # Funcion para instalar la aplicación en nuestra máquina
 def Instalar():
@@ -17,6 +17,9 @@ def Instalar():
         run('pip3 install -r ./IV-18-19-Proyecto/requirements.txt')
         run('pip install --upgrade pip')
 
+# Funcion para borrar el archivo
+def Borrar():
+    run('sudo rm -rf ./IV-18-19-Proyecto')
 
 # Funcion que se encarga de actualizar la aplicación con el nuevo contenido de mi repositorio
 def Actualizar():
