@@ -4,11 +4,10 @@ from fabric.api import *
 import os 
 import subprocess
 
-exists = os.path.isdir('./IV-18-19-Proyecto')
-run('ls')
-
 # Funcion para instalar la aplicación en nuestra máquina
 def Instalar():
+    exists = os.path.isdir('./IV-18-19-Proyecto')
+
     if exists:
         print('Existe el archivo, lo borramos')
         run('sudo rm -rf ./IV-18-19-Proyecto')
@@ -23,6 +22,8 @@ def Borrar():
 
 # Funcion que se encarga de actualizar la aplicación con el nuevo contenido de mi repositorio
 def Actualizar():
+    exists = os.path.isdir('./IV-18-19-Proyecto')
+
     if exists:
         print('Existe el archivo, actualizamos la aplicación')
         run('cd ./IV-18-19-Proyecto && git pull')
@@ -34,6 +35,8 @@ def Actualizar():
 
 # Funcion que se encargar de Iniciar la aplicación
 def Iniciar():
+    exists = os.path.isdir('./IV-18-19-Proyecto')
+    
     if exists:
         print('Existe el archivo, iniciamos la aplicación')
         run('cd IV-18-19-Proyecto && sudo gunicorn app:app -b 0.0.0.0:80')
