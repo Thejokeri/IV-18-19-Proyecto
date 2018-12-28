@@ -5,12 +5,9 @@ import os
 
 # Funcion para instalar la aplicación en nuestra máquina
 def Instalar():
-    exists = os.path.isdir('../IV-18-19-Proyecto')
-
-    if not exists:
-        run('git clone https://github.com/Thejokeri/IV-18-19-Proyecto.git')
-        run('pip3 install -r ./IV-18-19-Proyecto/requirements.txt')
-        run('pip install --upgrade pip')
+    run('git clone https://github.com/Thejokeri/IV-18-19-Proyecto.git')
+    run('pip3 install -r ./IV-18-19-Proyecto/requirements.txt')
+    run('pip install --upgrade pip')
 
 # Funcion para borrar el archivo
 def Borrar():
@@ -35,6 +32,8 @@ def Iniciar():
 
     if exists:
         print('Existe el archivo, iniciamos la aplicación')
+
+
         run('cd IV-18-19-Proyecto && sudo gunicorn app:app -b 0.0.0.0:80')
     else:
         print('Imposible arrancar la aplicación, debe de instalarla antes')
