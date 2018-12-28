@@ -47,4 +47,4 @@ def ShowDeploy():
 
 # Funcion que se encarga de parar el proceso de ejecución de la aplicación
 def Parar():
-    run('pkill -f gunicorn')
+    run('sudo pkill -f gunicorn')
