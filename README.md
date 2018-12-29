@@ -1,6 +1,6 @@
 # IV-18-19-Proyecto
 
-[![Build Status](https://travis-ci.com/Thejokeri/IV-18-19-Proyecto.svg?branch=master)](https://travis-ci.com/Thejokeri/IV-18-19-Proyecto)
+[![Build Status](https://travis-ci.org/Thejokeri/IV-18-19-Proyecto.svg?branch=master)](https://travis-ci.org/Thejokeri/IV-18-19-Proyecto)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
