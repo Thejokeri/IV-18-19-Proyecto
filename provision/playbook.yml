@@ -7,17 +7,17 @@
         upgrade: yes
         update_cache: yes
 
-    - name: Instalar pip2
+    - name: Instalar pip2, pip3, Git y PostgresSQL
       become: true
-      apt: pkg=python-pip state=latest
-
-    - name: Instalar pip3
-      become: true
-      apt: pkg=python3-pip state=latest
-
-    - name: Instalar Git
-      become: true
-      apt: pkg=git state=latest
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - python-pip
+        - python3-pip
+        - git
+        - postgresql
+        - postgresql-contrib
 
     - name: Clone a private repository into IV-18-19-Proyecto
       git:
@@ -26,6 +26,25 @@
         dest: IV-18-19-Proyecto/
       become: no
 
-    - name: Instalar requirements
+    - name: Sincronizando la carpeta local
+      synchronize:
+        src: /Users/thejoker/Documents/Facultad/1ºSemestre/IV/IV-18-19-Proyecto/importante
+        dest: .
+
+    - name: Instalar requirements.txt
       become: true
-      command: pip3 install -r ./IV-18-19-Proyecto/requirements.txt
+      command: pip install -r ./IV-18-19-Proyecto/requirements.txt
+
+    - name: Crear usuario postgres "{{ lookup('env','USER') }}"
+      become: yes
+      become_user: postgres
+      postgresql_user:
+        name: "{{ lookup('env','USER') }}"
+        password: "{{ lookup('env','PASS') }}"
+
+    - name: Crear la base de datos PDFdb
+      become: yes
+      become_user: postgres 
+      postgresql_db:
+        name: pdfdb
+        owner: "{{ lookup('env','USER') }}"
