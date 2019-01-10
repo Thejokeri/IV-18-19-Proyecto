@@ -18,7 +18,7 @@
         - git
         - postgresql
         - postgresql-contrib
-
+    
     - name: Clone a private repository into IV-18-19-Proyecto
       git:
         repo: https://github.com/Thejokeri/IV-18-19-Proyecto.git
@@ -28,7 +28,7 @@
 
     - name: Sincronizando la carpeta local
       synchronize:
-        src: /Users/thejoker/Documents/Facultad/1ºSemestre/IV/IV-18-19-Proyecto/importante
+        src: /Users/thejoker/Documents/Facultad/1ºSemestre/IV/IV-18-19-Proyecto/bd
         dest: .
 
     - name: Instalar requirements.txt
