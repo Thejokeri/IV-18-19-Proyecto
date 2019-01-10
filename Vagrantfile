@@ -5,9 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.boot_timeout = 1000
-    config.vm.network "forwarded_port", guest: 22, host: 2222
-    config.vm.network "forwarded_port", guest: 80, host: 8080
-
+    
     config.vm.define :machine_google do |machine_google|
         config.vm.box = "google/gce"
 
@@ -27,6 +25,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.define :machine_azure do |machine_azure|
         config.vm.box = 'azure'
+        config.vm.network "forwarded_port", guest: 22, host: 2222
+        config.vm.network "forwarded_port", guest: 80, host: 8080
 
         machine_azure.vm.provider :azure do |azure, override|
             azure.tenant_id = ENV['AZURE_TENANT_ID']
