@@ -125,23 +125,23 @@ Vagrant.configure("2") do |config|
 
     machine_azure.vm.provider :azure do |azure, override|
         azure.tenant_id = ENV['AZURE_TENANT_ID']
-        azure.client_id = ENV['AZURE_CLIENT_ID']
-        azure.client_secret = ENV['AZURE_CLIENT_SECRET']
-        azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+            azure.client_id = ENV['AZURE_CLIENT_ID']
+            azure.client_secret = ENV['AZURE_CLIENT_SECRET']
+            azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+            
+            azure.vm_size = 'Standard_B1ms'
+            azure.location = 'westeurope'
+		    azure.vm_name = 'cloudncloud'
+            azure.resource_group_name= 'cloudncloudgroup'
+            azure.tcp_endpoints = '80'
+            azure.virtual_network_name = 'cloudncloudnetwork'
+            azure.dns_name = 'cloudncloud'
+            azure.nsg_name = 'cloudncloudnsg'
+            azure.subnet_name = 'cloudncloudsubnet'
 
-        azure.vm_size = 'Standard_B1ms'
-        azure.location = 'westeurope'
-        azure.vm_name = 'cloudncloud'
-        azure.resource_group_name = 'cloudncloudgroup'
-        azure.tcp_endpoints = ['80','22']
-        azure.virtual_network_name = 'cloudncloudnetwork'
-        azure.dns_name = 'cloudncloud'
-        azure.nsg_name = 'cloudncloudnsg'
-        azure.subnet_name = 'cloudncloudsubnet'
-
-        override.vm.synced_folder ".", "/vagrant", disable: true
-        override.ssh.username = "djskullz8"
-        override.ssh.private_key_path = "~/.ssh/my-ssh-key"
+            config.vm.synced_folder ".", "/vagrant", type: "rsync"
+            override.ssh.username = "djskullz8"
+            override.ssh.private_key_path = "~/.ssh/my-ssh-key"
     end
 end
 ```
@@ -152,14 +152,13 @@ Indicamos a la máquina que los puertos 22 y 80 estan abiertos a través del 222
 - ```azure.location```: La localización de la máquina en nuestro caso es en West Europe.
 - ```azure.vm_name```: nombre de la maquina virtual.
 - ```azure.resource_group_name```: nombre del grupo de recurso.
-- ```azure.tcp_endpoints```:  las reglas de seguridad de entrada personalizadas forman parte del grupo de seguridad de la red (también conocidos como tcp endpoints), en mi caso el puerto 80 y 22.
+- ```azure.tcp_endpoints```:  las reglas de seguridad de entrada personalizadas forman parte del grupo de seguridad de la red (también conocidos como tcp endpoints), en mi caso el puerto 80.
 - ```azure.virtual_network_name```: nombre del recurso de red virtual.
 - ```azure.dns_name```: prefijo de etiqueta DNS.
 - ```azure.nsg_name```: prefijo de etiqueta de grupo de seguridad de red
 - ```azure.subnet_name```: nombre del recurso de subred de red virtual.
 
-Por último, indico que se sincronicen la carpeta actual con la de destino, mediante ```override.vm.synced_folder "origen", "destino", disable: true```.
-
+Por último, indico que se sincronicen la carpeta actual con la de destino, mediante ```config.vm.synced_folder ".", "/vagrant", type: "rsync"```.
 Lo mismo que antes, indicamos el usuario y la dirección de la clave privada de SSH.
 
 Una vez mas, la lanzamos:
@@ -329,13 +328,13 @@ En el [fabfile.py](../despliegue/fabfile.py) he creado las siguientes funciones:
 Orden para desplegar en la máquina de Azure:
 
 ```bash
-fab -f despliegue/fabfile.py -H djskullz8@23.97.177.83 <Funciones>
+fab -f despliegue/fabfile.py -H djskullz8@ip_machine_azure <Funciones>
 ```
 
 Orden para desplegar en la máquina de Google:
 
 ```bash
-fab -f despliegue/fabfile.py -H djskullz8@35.225.49.80 <Funciones>
+fab -f despliegue/fabfile.py -H djskullz8@ip_machine_google <Funciones>
 ```
 
 Enlaces de interés
