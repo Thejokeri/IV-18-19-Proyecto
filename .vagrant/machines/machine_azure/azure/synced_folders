@@ -1,1 +1,1 @@
-{}
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/thejoker/Documents/Facultad/1ºSemestre/IV/IV-18-19-Proyecto","disabled":false,"__vagrantfile":true,"owner":"djskullz8","group":"djskullz8"}}}
