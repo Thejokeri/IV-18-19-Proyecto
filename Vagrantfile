@@ -40,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             azure.resource_group_name= 'cloudncloudgroup'
 		    azure.tcp_endpoints = '80'
 
-            override.vm.synced_folder ".", "/vagrant", disabled: true
+            override.vm.synced_folder ".", "/vagrant"
             override.ssh.username = "djskullz8"
             override.ssh.private_key_path = "~/.ssh/my-ssh-key"
         end
