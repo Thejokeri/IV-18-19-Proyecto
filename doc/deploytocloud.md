@@ -52,7 +52,7 @@ end
 
 La función del Vagranfile es describir el tipo de máquina que se va a utilizar, cómo se va a configurar y cómo provisionarla.
 
-En mi caso, indico que voy a utilizar como imagen un Ubuntu 16.04LTS, cuyo nombre es cloudncloud y el tipo de máquina es g1-small. Estás caracteristicas las determino con las respectivas variables: image_family para indicar el sistema operativo a utilizar, name para indicar el nombre de la maquina virtual y machine_type para el tipo de [máquinas que ofrece google](https://cloud.google.com/compute/docs/machine-types). Además de añadir el nombre, la capacidad del disco y el tipo de disco, ```google.disk_name```, ```google.disk_size``` y ```google.disk_type``` respectivamente. Indico el nombre de la red y de la subred (```google.network``` y ```google.subnetwork```). Y por último, establezco la ip pública de mi máquina ```google.external_ip```.
+En mi caso, indico que voy a utilizar como imagen un Ubuntu 16.04LTS, cuyo nombre es cloudncloud y el tipo de máquina es g1-small. Estás caracteristicas las determino con las respectivas variables: ```image_family``` para indicar el sistema operativo a utilizar, ```name``` para indicar el nombre de la maquina virtual y ```machine_type``` para el tipo de [máquinas que ofrece google](https://cloud.google.com/compute/docs/machine-types). Además de añadir el nombre, la capacidad del disco y el tipo de disco, ```google.disk_name```, ```google.disk_size``` y ```google.disk_type``` respectivamente. Indico el nombre de la red y de la subred (```google.network``` y ```google.subnetwork```). Y por último, establezco la ip pública de mi máquina ```google.external_ip```.
 
 Antes debemos de indicar la dummy box que google utiliza mediante ```config.vm.box = "google/gce"```. Una dummy box, o caja, son el formato de paquete para entornos Vagrant. Cualquiera puede usar una caja en cualquier plataforma que Vagrant admita para crear un entorno de trabajo idéntico. La forma para agregar cajas la podemos obtener del [catálogo](https://app.vagrantup.com/boxes/search) que ofrece Vagrant.
 
@@ -111,7 +111,7 @@ La salida ```az ad sp create-for-rbac``` debería de tener el siguiente aspecto:
 }
 ```
 
-Los valores ```tenant```, ```appId``` y ```password``` se asignan a los valores de configuración ```azure.tenant_id```, ```azure.client_id``` y ```azure.client_secret``` en su archivo Vagrant. Al igual que en la configuración de la máquina de Google, toda esta información debe de estar en la configuración del Vagrantfile.
+Los valores ```tenant```, ```appId``` y ```password``` se asignan a los valores de configuración ```azure.tenant_id```, ```azure.client_id``` y ```azure.client_secret``` en su archivo Vagrant. Al igual que en la configuración de la máquina de Google, toda esta información debe de estar en la configuración del Vagrantfile de Azure.
 
 Como dummy box utilizamos el ```config.vm.box = azure```.
 
@@ -236,18 +236,17 @@ config.vm.provision :ansible do |ansible|
 end
 ```
 
-La idea del archivo ```playbook.yml``` es automatizar la instalación de los paquetes en nuestra máquinas, en mi caso le añado reglas para que realice la actualizacion del sistema operativo, la instalación de paquetes necesarios (pip2, pip3, Git y PostgresSQL),la clonación de mi repositorio, sincronización de la carpeta actual, la creación del usuario y de la base de datos para mi aplicación, y la instalación de los paquetes del [```requirements.txt```](../requirements.txt).  Y todo ello se realiza cuando creamos por primera vez nuestra máquina virtual.
+La idea del archivo ```playbook.yml``` es automatizar la instalación de los paquetes en nuestra máquinas, en mi caso le añado reglas para que realice la actualizacion del sistema operativo, la instalación de paquetes necesarios (pip2, pip3, Git y PostgresSQL), la clonación de mi repositorio, sincronización de la carpeta actual de la base de datos, la creación del usuario y de la base de datos para mi aplicación, y la instalación de los paquetes del [```requirements.txt```](../requirements.txt).  Y todo ello se realiza cuando creamos por primera vez nuestra máquina virtual.
 
 ```ansible
-- hosts: all
-  remote_user: djskullz8
-  tasks:
+    # Actualizo la máquina virtual
     - name: Update and upgrade apt packages
       become: true
       apt:
         upgrade: yes
         update_cache: yes
 
+    # Instalo los paquetes necesarios
     - name: Instalar pip2, pip3, Git y PostgresSQL
       become: true
       apt:
@@ -260,6 +259,7 @@ La idea del archivo ```playbook.yml``` es automatizar la instalación de los paq
         - postgresql
         - postgresql-contrib
 
+    # Clono el repositorio
     - name: Clone a private repository into IV-18-19-Proyecto
       git:
         repo: https://github.com/Thejokeri/IV-18-19-Proyecto.git
@@ -267,15 +267,18 @@ La idea del archivo ```playbook.yml``` es automatizar la instalación de los paq
         dest: IV-18-19-Proyecto/
       become: no
 
+    # Sincornizo la carpeta de la base de datos
     - name: Sincronizando la carpeta local
       synchronize:
         src: /Users/thejoker/Documents/Facultad/1ºSemestre/IV/IV-18-19-Proyecto/bd
         dest: .
 
+    # Instalo los requierements.txt
     - name: Instalar requirements.txt
       become: true
       command: pip install -r ./IV-18-19-Proyecto/requirements.txt
 
+    # Creo el usuario de la base de datos
     - name: Crear usuario postgres "{{ lookup('env','USER') }}"
       become: yes
       become_user: postgres
@@ -283,9 +286,10 @@ La idea del archivo ```playbook.yml``` es automatizar la instalación de los paq
         name: "{{ lookup('env','USER') }}"
         password: "{{ lookup('env','PASS') }}"
 
+    # Creo la base de datos
     - name: Crear la base de datos PDFdb
       become: yes
-      become_user: postgres
+      become_user: postgres 
       postgresql_db:
         name: pdfdb
         owner: "{{ lookup('env','USER') }}"
