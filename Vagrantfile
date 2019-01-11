@@ -4,7 +4,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.boot_timeout = 1000
+    config.vm.boot_timeout = 300
     
     config.vm.define :machine_google do |machine_google|
         config.vm.box = "google/gce"
@@ -17,6 +17,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             google.image_family = 'ubuntu-1604-lts'
             google.name = 'cloudncloud'
             google.machine_type = 'g1-small'
+            google.tags = ['vagrantbox', 'dev']
+            google.disk_size = 10
+            google.disk_name = 'cloudnclouddisk'
+            google.disk_type = 'pd-ssd'
+            google.network = 'cloudncloudnetwork'
+            google.subnetwork = 'cloudncloudsubnetwork'
+            google.external_ip = '35.232.122.71'
 
             override.ssh.username = "djskullz8"
             override.ssh.private_key_path = "~/.ssh/my-ssh-key"
@@ -39,8 +46,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		    azure.vm_name = 'cloudncloud'
             azure.resource_group_name= 'cloudncloudgroup'
 		    azure.tcp_endpoints = '80'
+            azure.tcp_endpoints = '22'
+            azure.virtual_network_name = 'cloudncloudnetwork'
+            azure.dns_name = 'cloudncloud'
+            azure.nsg_name = 'cloudncloudnsg'
+            azure.subnet_name = 'cloudncloudsubnet'
 
-            override.vm.synced_folder ".", "/vagrant"
+            override.vm.synced_folder ".", "/vagrant", disable: true
             override.ssh.username = "djskullz8"
             override.ssh.private_key_path = "~/.ssh/my-ssh-key"
         end
