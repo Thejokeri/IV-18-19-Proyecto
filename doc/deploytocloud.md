@@ -152,9 +152,9 @@ Indicamos a la máquina que los puertos 22 y 80 estan abiertos a través del 222
 - ```azure.location```: La localización de la máquina en nuestro caso es en West Europe.
 - ```azure.vm_name```: nombre de la maquina virtual.
 - ```azure.resource_group_name```: nombre del grupo de recurso.
-- ```azure.tcp_endpoints```:  las reglas de seguridad de entrada personalizadas forman parte del grupo de seguridad de la red (también conocidos como tcp endpoints, en mi caso el puerto 80 y 22.
+- ```azure.tcp_endpoints```:  las reglas de seguridad de entrada personalizadas forman parte del grupo de seguridad de la red (también conocidos como tcp endpoints), en mi caso el puerto 80 y 22.
 - ```azure.virtual_network_name```: nombre del recurso de red virtual.
-- ```azure.dns_name```: prefijo de Etiqueta DNS.
+- ```azure.dns_name```: prefijo de etiqueta DNS.
 - ```azure.nsg_name```: prefijo de etiqueta de grupo de seguridad de red
 - ```azure.subnet_name```: nombre del recurso de subred de red virtual.
 
