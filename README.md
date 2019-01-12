@@ -88,7 +88,7 @@ El despliegue lo he realizado en Heroku. [Documentación](./doc/deploytoheroku.m
 El despliegue de Docker esta en el siguiente enlace: [Documentación.](./doc/deploytocontainer.md)
 
 * Enlace a DockerHub: https://hub.docker.com/r/thejokeri/iv-18-19-proyecto/
-* Contenedor: https://cloudncloud-container.herokuapp.com/status
+* Contenedor: https://cloudncloud-container.herokuapp.com
 
 ### Despliegue en Zeit
 
@@ -104,7 +104,7 @@ El despliegue en la nube lo he realizado en Azure y en Google Cloud.
 
 #### Azure
 
-Despliegue final: 13.69.50.26
+Despliegue final: 13.69.50.262
 
 #### Google Cloud
 
