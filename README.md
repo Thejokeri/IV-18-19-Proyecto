@@ -104,7 +104,7 @@ El despliegue en la nube lo he realizado en Azure y en Google Cloud.
 
 #### Azure
 
-Despliegue final: 13.69.50.262
+Despliegue final: 13.69.50.26
 
 #### Google Cloud
 
